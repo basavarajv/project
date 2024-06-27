@@ -118,18 +118,17 @@ def new_page():
     import numpy as np
     import pandas as pd
 
-
     # Load saved models
     diabetes_model = pickle.load(
-        open('D:/mdp/diabetes_model.sav', 'rb'))
+        open('diabetes_model.sav', 'rb'))
     diabetes_model_scaler = pickle.load(
-        open('D:/mdp/diabetes_model_scaler.sav', 'rb'))
+        open('diabetes_model_scaler.sav', 'rb'))
     heart_disease_model = pickle.load(
-        open('D:/mdp/heart_disease_model.sav', 'rb'))
+        open('heart_disease_model.sav', 'rb'))
     lung_cancer_model = pickle.load(
-        open('D:/mdp/lung_cancer_model.sav', 'rb'))
+        open('lung_cancer_model.sav', 'rb'))
     lung_cancer_model_scaler = pickle.load(
-        open('D:/mdp/lung_cancer_model_scaler.sav', 'rb'))
+        open('lung_cancer_model_scaler.sav', 'rb'))
     
     
     # Sidebar for navigation
