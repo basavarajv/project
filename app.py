@@ -164,7 +164,7 @@ def new_page():
             'Human Diseases Prediction System',
             ['Gestational Diabetes Prediction', 'Heart Disease Prediction', 'Lung Cancer Prediction'],
             menu_icon='hospital-fill',
-            icons=['activity', 'heart', 'person'],
+            icons=[],
             default_index=0
             )
 
