@@ -3,3 +3,5 @@ pickle-mixin==1.0.2
 streamlit==1.33.0
 streamlit-option-menu==0.1.2
 scikit-learn==1.4.2
+jsonschema==4.19.2
+jsonschema-specifications==2023.7.1
