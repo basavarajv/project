@@ -1,5 +1,10 @@
 import streamlit as st
 
+# Set page configuration
+st.set_page_config(page_title="Human Disease Prediction",
+                   layout="wide",
+                   page_icon="🧑‍⚕️")
+
 # Dummy storage for user credentials
 user_credentials = {
     "admin": "password"  # Existing dummy user
@@ -136,8 +141,8 @@ def new_page():
         selected = option_menu(
             'Human Diseases Prediction System',
             ['Gestational Diabetes Prediction', 'Heart Disease Prediction', 'Lung Cancer Prediction'],
-            menu_icon=[],
-            icons=[],
+            menu_icon='hospital-fill',
+            icons=['activity', 'heart', 'person'],
             default_index=0
             )
 
