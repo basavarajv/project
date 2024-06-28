@@ -3,25 +3,23 @@ import os
 import json
 import time
 
-# Set page configuration
-st.set_page_config(page_title="Human Disease Prediction",
-                   page_icon="🧑‍⚕️")
-
-
 # Path to the file where user credentials will be stored
 CREDENTIALS_FILE = 'user_credentials.json'
 
 # Load user credentials from the file
 def load_credentials():
     if os.path.exists(CREDENTIALS_FILE):
-        with open(CREDENTIALS_FILE, 'r') as f:
-            return json.load(f)
+        try:
+            with open(CREDENTIALS_FILE, 'r', encoding='utf-8') as f:
+                return json.load(f)
+        except (json.JSONDecodeError, UnicodeDecodeError):
+            return {}
     else:
         return {}
 
 # Save user credentials to the file
 def save_credentials(credentials):
-    with open(CREDENTIALS_FILE, 'w') as f:
+    with open(CREDENTIALS_FILE, 'w', encoding='utf-8') as f:
         json.dump(credentials, f)
 
 # Load credentials at the start
