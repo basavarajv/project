@@ -1,18 +1,37 @@
 import streamlit as st
+import os
+import json
+import time
 
 # Set page configuration
 st.set_page_config(page_title="Human Disease Prediction",
-                   layout="wide",
                    page_icon="🧑‍⚕️")
 
-# Dummy storage for user credentials
-user_credentials = {
-    "admin": "password"  # Existing dummy user
-}
+
+# Path to the file where user credentials will be stored
+CREDENTIALS_FILE = 'user_credentials.json'
+
+# Load user credentials from the file
+def load_credentials():
+    if os.path.exists(CREDENTIALS_FILE):
+        with open(CREDENTIALS_FILE, 'r') as f:
+            return json.load(f)
+    else:
+        return {}
+
+# Save user credentials to the file
+def save_credentials(credentials):
+    with open(CREDENTIALS_FILE, 'w') as f:
+        json.dump(credentials, f)
+
+# Load credentials at the start
+user_credentials = load_credentials()
 
 # Function to validate login credentials
 def validate_login(username, password):
     return user_credentials.get(username) == password
+
+
 
 
 # Function to register a new user
@@ -20,6 +39,7 @@ def register_user(username, password):
     if username in user_credentials:
         return False  # Username already exists
     user_credentials[username] = password
+    save_credentials(user_credentials)
     return True
 
 
@@ -54,7 +74,7 @@ def login_page():
         if validate_login(username, password):
             st.session_state.logged_in = True
             st.session_state.username = username
-            st.experimental_rerun()
+            st.rerun()
         elif not username or not password:
             st.error("Username and password cannot be empty")
         else:
@@ -63,7 +83,7 @@ def login_page():
     st.markdown("new user!! click below to register", unsafe_allow_html=True)
     if st.button("Go to Registration"):
         st.session_state.show_register = True
-        st.experimental_rerun()
+        st.rerun()
 
 # Function to render the registration page
 def register_page():
@@ -104,13 +124,14 @@ def register_page():
         elif register_user(username, password):
             st.success("Registration successful! Please log in.")
             st.session_state.show_register = False
-            st.experimental_rerun()
+            time.sleep(5) 
+            st.rerun()
         else:
             st.error("Username already exists")
 
     if st.button("Go to Login"):
         st.session_state.show_register = False
-        st.experimental_rerun()
+        st.rerun()
 
             
         
