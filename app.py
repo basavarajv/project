@@ -4,9 +4,8 @@ import json
 import time
 
 # Set page configuration
-st.set_page_config(page_title="Human Disease Prediction",
-                   page_icon="🧑‍⚕")
-
+st.set_page_config(page_title="Health Assistant",
+                   page_icon="🧑‍⚕️")
 # Path to the file where user credentials will be stored
 CREDENTIALS_FILE = 'user_credentials.json'
 
