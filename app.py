@@ -262,7 +262,7 @@ def new_page():
 
         st.markdown(page_bg_img, unsafe_allow_html=True)
 
-        st.title('Heart Disease Prediction using ML')
+        st.title('Heart Disease Prediction')
 
         # Input fields for user data
         age = st.number_input('Age', min_value=0, max_value=120, step=1)
