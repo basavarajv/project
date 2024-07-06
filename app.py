@@ -125,7 +125,7 @@ def register_page():
         elif register_user(username, password):
             st.success("Registration successful! Please log in.")
             st.session_state.show_register = False
-            time.sleep(5) 
+            time.sleep(3) 
             st.rerun()
         else:
             st.error("Username already exists")
